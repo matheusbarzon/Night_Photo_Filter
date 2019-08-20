@@ -1,8 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Autor     : Mateus Pires Tonon; Matheus Barzon Lima
-% Descrição : * Alteração do strechting
-%             * Alteração do brilho
-%             * Remoção de ruído
+% DescriÃ§Ã£o : * AlteraÃ§Ã£o do strechting
+%             * AlteraÃ§Ã£o do brilho
+%             * RemoÃ§Ã£o de ruÃ­do
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 clear;
@@ -46,12 +46,12 @@ for img = 1 : length(files)
     imgStrecht_2(:,:,k) = constant(k)*uint8(sumStrechtImg(:,:,k)-minValuePixel(k))+0;
   end
     
-  for k=1:sizeOfImage(3) %Remoção de ruido
+  for k=1:sizeOfImage(3) %RemoÃ§Ã£o de ruido
     imgMedfilt(:,:,k) = medfilt2(imgStrecht_2(:,:,k), [3, 3]);
   end
   
   imgMedfiltCor=imgMedfilt;    
-  imgMedfiltCor(:,:,1) = imgMedfilt(:,:,1)-15; %Aumento da cor ciano com a redução da cor vermelha
+  imgMedfiltCor(:,:,1) = imgMedfilt(:,:,1)-15; %Aumento da cor ciano com a reduÃ§Ã£o da cor vermelha
   
   imwrite(imgMedfilt,nameOfFile_NoFilter); 
   imwrite(imgMedfiltCor,nameOfFile_CyanFilter); 
